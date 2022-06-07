@@ -1,0 +1,34 @@
+class Solution
+{
+    String secFrequent(String arr[], int N)
+    {
+       Map<String,Integer> res=new HashMap<>();
+       int temp;
+       for(int i=0;i<N;i++)
+       {
+           if(!res.containsKey(arr[i]))
+           {
+               res.put(arr[i],1);
+           }
+           else{
+               temp=res.get(arr[i]);
+               res.put(arr[i],temp+1);
+           }
+       }
+       List<Integer> a=new ArrayList<>();
+       for(Integer val : res.values())
+       {
+           a.add(val);
+       }
+       
+     Collections.sort(a);
+     temp=a.get(a.size()-2);
+      for(int i=0;i<N;i++)
+      {
+          if(res.get(arr[i])==temp)
+          return arr[i];
+      }
+    return "j";
+      
+    }
+}
